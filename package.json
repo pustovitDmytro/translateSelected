@@ -1,0 +1,16 @@
+{
+  "title": "translate selected text from english to ukrainian",
+  "name": "quicktranslate",
+  "version": "0.0.1",
+  "description": "use it to translate selected text from english to ukrainian",
+  "main": "index.js",
+  "author": "Dmytro Pustovit",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}
