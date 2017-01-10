@@ -1,0 +1,2 @@
+# translateSelected
+firefox Plugin
