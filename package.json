@@ -12,5 +12,12 @@
   "license": "MIT",
   "keywords": [
     "jetpack"
-  ]
+  ],
+  "preferences": [{
+      "name": "activated",
+      "title": "activation",
+      "description": "it activates/diactivates addon",
+      "type": "bool",
+      "value": true
+  }]
 }
