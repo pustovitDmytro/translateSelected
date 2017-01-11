@@ -18,6 +18,6 @@
       "title": "activation",
       "description": "it activates/diactivates addon",
       "type": "bool",
-      "value": true
+      "value": false
   }]
 }

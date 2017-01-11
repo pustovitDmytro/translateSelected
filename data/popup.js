@@ -1,6 +1,6 @@
 
 function SetPopup(text){
-	var textItem = document.getElementById("popup");
+	var textItem = document.getElementById("popup-text");
 	textItem.innerHTML = text;
 }
 

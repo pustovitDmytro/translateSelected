@@ -5,10 +5,12 @@ var selection = require("sdk/selection");
 var activated = require('sdk/simple-prefs').prefs['activated']
 
 var button = buttons.ActionButton({
-  id: "github-link",
-  label: "Visit Github",
+  id: "button",
+  label: "translate selected",
   icon:  {
-    "16": "./icon-16.png"  
+    "16": "./16-n.png",
+    "32": "./32-n.png",
+    "64": "./64-n.png"
   },
   onClick: handleClick
 });
@@ -16,22 +18,29 @@ var button = buttons.ActionButton({
 var Popup = require("sdk/panel").Panel({
   height: 200,
   contentURL: "./popup.html",
-  contentScriptFile: "./popup.js"
+  contentScriptFile: "./popup.js",
+  position: button
 });
 
 tabs.open("https://en.wikipedia.org/wiki/Liverpool_F.C.");
 
 selection.on('select', function () {
+  if(activated){
        Popup.port.emit("selection",selection.text);
 	console.log('Selected : ['+selection.text+'];');
   	Popup.show();
+  }
 });
 
 function handleClick(state) {
   activated=!activated;
-  if(activated) button.icon = {
-    "16": "./icon-16.png"  
-  };else button.icon = {
-    "16": "./test_ico.png"  
+  button.icon = (activated)?{
+    "16": "./16-a.png",
+    "32": "./32-a.png",
+    "64": "./64-a.png"
+  }:{
+    "16": "./16-n.png",
+    "32": "./32-n.png",
+    "64": "./64-n.png"
   }
 }
