@@ -3,6 +3,9 @@ var tabs = require("sdk/tabs");
 var data = require("sdk/self").data;
 var selection = require("sdk/selection");
 var activated = require('sdk/simple-prefs').prefs['activated']
+var Request = require("sdk/request").Request;
+var apiKey = require("./api.js").key;
+tabs.open("https://en.wikipedia.org/wiki/Liverpool_F.C.");
 
 var button = buttons.ActionButton({
   id: "button",
@@ -13,23 +16,6 @@ var button = buttons.ActionButton({
     "64": "./64-n.png"
   },
   onClick: handleClick
-});
-
-var Popup = require("sdk/panel").Panel({
-  height: 200,
-  contentURL: "./popup.html",
-  contentScriptFile: "./popup.js",
-  position: button
-});
-
-tabs.open("https://en.wikipedia.org/wiki/Liverpool_F.C.");
-
-selection.on('select', function () {
-  if(activated){
-       Popup.port.emit("selection",selection.text);
-	console.log('Selected : ['+selection.text+'];');
-  	Popup.show();
-  }
 });
 
 function handleClick(state) {
@@ -44,3 +30,28 @@ function handleClick(state) {
     "64": "./64-n.png"
   }
 }
+
+var Popup = require("sdk/panel").Panel({
+  height: 200,
+  contentURL: "./popup.html",
+  contentScriptFile: "./popup.js",
+  position: button
+});
+
+selection.on('select', function () {
+  if(activated){
+    var toLan = 'uk';
+    var Url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=" 
+    + apiKey + "&lang=" + toLan + "&text=" + selection.text+ "&options=1";
+    Request({
+      url: Url,
+      onComplete: function(response){
+        Popup.port.emit("translation",response.json);
+      }
+    }).get();
+    Popup.port.emit("selection",selection.text);
+    console.log('Selected : ['+selection.text+'];');
+    Popup.show();
+  }
+});
+
