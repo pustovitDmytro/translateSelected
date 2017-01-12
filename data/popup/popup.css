@@ -1,0 +1,18 @@
+ span{ 
+    font-size: 18px; 
+    font-family: fantasy;
+   }
+  button{
+   	width: 48px;
+   	font-size: 11px;
+   	font-style: bold;
+   	padding: 1px;
+   }
+   .flag{
+   	width: 22;
+   	height: 16;
+   	margin: 3;
+   }
+   #json{
+    display: none;
+   }
