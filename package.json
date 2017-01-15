@@ -1,8 +1,8 @@
 {
-  "title": "translate selected text from english to ukrainian",
-  "name": "quicktranslate",
+  "title": "quick selected text translator",
+  "name": "instantaneoustranslator",
   "version": "0.0.1",
-  "description": "use it to translate selected text from english to ukrainian",
+  "description": "This add-on can instantaneously translate any selected text on the current page",
   "main": "index.js",
   "author": "Dmytro Pustovit",
   "engines": {
@@ -11,9 +11,9 @@
   },
   "license": "MIT",
   "keywords": [
-    "jetpack"
+    "translate","selected","quick","fast","instantaneously","en-uk"
   ],
-  "preferences": [{
+ "preferences": [{
       "name": "activated",
       "title": "activation",
       "description": "it activates/diactivates addon",
