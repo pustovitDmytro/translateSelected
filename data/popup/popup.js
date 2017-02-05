@@ -1,10 +1,16 @@
 window.text ={};
 
 function SetPopup(text){
-	var selectItem = document.getElementById("selected-text").querySelector(".text");
-	selectItem.innerHTML = text.selected;
-	var translatedItem = document.getElementById("translated-text").querySelector(".text");
-	translatedItem.innerHTML = text.selected;
+	var selectItem = document.getElementById("selected-text");
+	selectItem.querySelector(".text").innerHTML = text.selected;	
+	flag = selectItem.querySelector(".flag");
+	flag["src"]="waving/"+text.fromLan+".png";
+	flag["alt"] = text.fromLan;
+	var translatedItem = document.getElementById("translated-text");
+	translatedItem.querySelector(".text").innerHTML = text.translated;
+	flag = translatedItem.querySelector(".flag");
+	flag["src"]="waving/"+text.toLan+".png";
+	flag["alt"] = text.toLan;
 	json = document.getElementById("json");
 	json.innerHTML = JSON.stringify(text);
 };

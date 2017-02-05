@@ -20,6 +20,21 @@
       "type": "bool",
       "value": false
   },{
+      "name": "flag",
+      "title": "flag",
+      "description": "choose the flag type","type": "radio",
+      "value": "wawing",
+      "options": [
+        {
+            "value": "wawing",
+            "label": "Wawing flags"
+        },
+        {
+            "value": "balls",
+            "label": "Country balls"
+        }
+    ]
+  },{
       "name": "LangTo",
       "title": "target language",
       "description": "choose target language",
@@ -47,11 +62,15 @@
             "label": "Russian"
         },
         {
+            "value": "zh",
+            "label": "Chinese"
+        },
+        {
             "value": "pl",
             "label": "Polish"
         },
         {
-            "value": "ge",
+            "value": "de",
             "label": "German"
         },
         {
