@@ -23,11 +23,11 @@
       "name": "flag",
       "title": "flag",
       "description": "choose the flag type","type": "radio",
-      "value": "wawing",
+      "value": "waving",
       "options": [
         {
-            "value": "wawing",
-            "label": "Wawing flags"
+            "value": "waving",
+            "label": "Waving flags"
         },
         {
             "value": "balls",

@@ -5,15 +5,28 @@ var Request = require("sdk/request").Request;
 var apiKey = require("./api.js").key;
 var preferences = require("sdk/simple-prefs").prefs;
 var activated = require('sdk/simple-prefs').prefs['activated'];
+var icoType = require('sdk/simple-prefs').prefs['flag'];
 var LangTo = require('sdk/simple-prefs').prefs['LangTo'];
-require("sdk/simple-prefs").on("LangTo", onLanChange);
-require("sdk/simple-prefs").on("activated", onActChange);
-function onLanChange(prefName){
+
+require("sdk/simple-prefs").on("LangTo", function(){
   LangTo=preferences.LangTo;
-}
-function onActChange(prefName){
-  LangTo=preferences.LangTo;
-}
+});
+require("sdk/simple-prefs").on("activated",  function(){
+  activated=preferences.activated;
+  button.icon = (activated)?{
+    "16": "./toolbar/16-a.png",
+    "32": "./toolbar/32-a.png",
+    "64": "./toolbar/64-a.png"
+  }:{
+    "16": "./toolbar/16-n.png",
+    "32": "./toolbar/32-n.png",
+    "64": "./toolbar/64-n.png"
+  };
+});
+require("sdk/simple-prefs").on("flag",  function(){
+  icoType=preferences.flag;
+});
+
 var button = buttons.ActionButton({
   id: "button",
   label: "translate selected",
@@ -58,7 +71,8 @@ selection.on('select', function () {
       }
     }).get();
 
-    Popup.port.emit("selection",{text:selection.text, Lang:LangTo});
+    Popup.port.emit("selection",{text:selection.text, Lang:LangTo, folder:icoType});
+    console.log(icoType);
     console.log('Selected : ['+selection.text+']; lang = '+LangTo);
     Popup.show();
   }

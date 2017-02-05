@@ -1,15 +1,17 @@
 window.text ={};
 
 function SetPopup(text){
+	var srcfolder = text.img.folder+'/';
+	console.log(srcfolder);
 	var selectItem = document.getElementById("selected-text");
 	selectItem.querySelector(".text").innerHTML = text.selected;	
 	flag = selectItem.querySelector(".flag");
-	flag["src"]="waving/"+text.fromLan+".png";
+	flag["src"]=srcfolder+text.fromLan+".png";
 	flag["alt"] = text.fromLan;
 	var translatedItem = document.getElementById("translated-text");
 	translatedItem.querySelector(".text").innerHTML = text.translated;
 	flag = translatedItem.querySelector(".flag");
-	flag["src"]="waving/"+text.toLan+".png";
+	flag["src"]=srcfolder+text.toLan+".png";
 	flag["alt"] = text.toLan;
 	json = document.getElementById("json");
 	json.innerHTML = JSON.stringify(text);
@@ -18,6 +20,7 @@ function SetPopup(text){
 self.port.on("selection", function(obj) {
   text.selected = obj.text;
   text.toLan=obj.Lang;
+  text.img = {folder:obj.folder};
   if(text.translated) SetPopup(text);
 });
 
