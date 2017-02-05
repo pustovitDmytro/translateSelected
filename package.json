@@ -1,7 +1,7 @@
 {
   "title": "quick selected text translator",
   "name": "instantaneoustranslator",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "This add-on can instantaneously translate any selected text on the current page",
   "main": "index.js",
   "author": "Dmytro Pustovit",
