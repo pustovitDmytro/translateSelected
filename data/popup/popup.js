@@ -13,8 +13,6 @@ function SetPopup(text){
 	flag = translatedItem.querySelector(".flag");
 	flag["src"]=srcfolder+text.toLan+".png";
 	flag["alt"] = text.toLan;
-	json = document.getElementById("json");
-	json.innerHTML = JSON.stringify(text);
 };
 
 self.port.on("selection", function(obj) {
@@ -31,8 +29,12 @@ self.port.on("translation", function(response){
 });
 function GoTo(option){
 	var link = '';
-	json = document.getElementById("json");
-	text = JSON.parse(json.innerHTML);
+	Item = document.getElementById("popup-text");
+	text = {
+		fromLan: Item.querySelector("#selected-text > .flag").getAttribute("alt"),
+		toLan: Item.querySelector("#translated-text > .flag").getAttribute("alt"),
+		selected:Item.querySelector("#selected-text > .text").innerHTML
+	}
 	switch(option){
 		case 'Google': 
 			link = "https://translate.google.com.ua/#"+text.fromLan+"/"+text.toLan+"/"+text.selected;
