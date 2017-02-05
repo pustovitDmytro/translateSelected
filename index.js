@@ -1,10 +1,19 @@
 var buttons = require('sdk/ui/button/action');
 var data = require("sdk/self").data;
 var selection = require("sdk/selection");
-var activated = require('sdk/simple-prefs').prefs['activated']
 var Request = require("sdk/request").Request;
 var apiKey = require("./api.js").key;
-
+var preferences = require("sdk/simple-prefs").prefs;
+var activated = require('sdk/simple-prefs').prefs['activated'];
+var LangTo = require('sdk/simple-prefs').prefs['LangTo'];
+require("sdk/simple-prefs").on("LangTo", onLanChange);
+require("sdk/simple-prefs").on("activated", onActChange);
+function onLanChange(prefName){
+  LangTo=preferences.LangTo;
+}
+function onActChange(prefName){
+  LangTo=preferences.LangTo;
+}
 var button = buttons.ActionButton({
   id: "button",
   label: "translate selected",
@@ -39,18 +48,18 @@ var Popup = require("sdk/panel").Panel({
 
 selection.on('select', function () {
   if(activated){
-    var toLan = 'uk';
     var Url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=" 
-    + apiKey + "&lang=" + toLan + "&text=" + selection.text+ "&options=1";
+    + apiKey + "&lang=" + LangTo + "&text=" + selection.text+ "&options=1";
         Request({
       url: Url,
       onComplete: function(response){
         Popup.port.emit("translation",response.json);
+        console.log(response.json);
       }
     }).get();
 
-    Popup.port.emit("selection",selection.text);
-    console.log('Selected : ['+selection.text+'];');
+    Popup.port.emit("selection",{text:selection.text, Lang:LangTo});
+    console.log('Selected : ['+selection.text+']; lang = '+LangTo);
     Popup.show();
   }
 });

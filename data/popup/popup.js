@@ -1,22 +1,22 @@
 window.text ={};
 
 function SetPopup(text){
-	var selectItem = document.getElementById("selected-text");
+	var selectItem = document.getElementById("selected-text").querySelector(".text");
 	selectItem.innerHTML = text.selected;
-	var translateItem =  document.getElementById("translated-text");
-	translateItem.innerHTML=text.translated;
+	var translatedItem = document.getElementById("translated-text").querySelector(".text");
+	translatedItem.innerHTML = text.selected;
 	json = document.getElementById("json");
 	json.innerHTML = JSON.stringify(text);
 };
 
-self.port.on("selection", function(selected) {
-  text.selected = selected;
+self.port.on("selection", function(obj) {
+  text.selected = obj.text;
+  text.toLan=obj.Lang;
   if(text.translated) SetPopup(text);
 });
 
 self.port.on("translation", function(response){
 	text.translated = response.text[0];
-	text.toLan = 'uk'
 	text.fromLan = response.detected["lang"];
 	if(text.selected) SetPopup(text);
 });

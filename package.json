@@ -19,5 +19,51 @@
       "description": "it activates/diactivates addon",
       "type": "bool",
       "value": false
-  }]
+  },{
+      "name": "LangTo",
+      "title": "target language",
+      "description": "choose target language",
+      "type": "menulist",
+      "value": "uk",
+      "options": [
+        {
+            "value": "uk",
+            "label": "Ukrainian"
+        },
+        {
+            "value": "en",
+            "label": "English"
+        },
+        {
+            "value": "it",
+            "label": "Italian"
+        },
+        {
+            "value": "es",
+            "label": "Spanish"
+        },
+        {
+            "value": "ru",
+            "label": "Russian"
+        },
+        {
+            "value": "pl",
+            "label": "Polish"
+        },
+        {
+            "value": "ge",
+            "label": "German"
+        },
+        {
+            "value": "tr",
+            "label": "Turkish"
+        },
+        {
+            "value": "ja",
+            "label": "Japanese"
+        }
+    ]
+
+  }
+]
 }
