@@ -2,7 +2,6 @@ window.text ={};
 
 function SetPopup(text){
 	var srcfolder = text.img.folder+'/';
-	console.log(srcfolder);
 	var selectItem = document.getElementById("selected-text");
 	selectItem.querySelector(".text").innerHTML = text.selected;	
 	flag = selectItem.querySelector(".flag");

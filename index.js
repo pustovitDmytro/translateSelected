@@ -52,7 +52,7 @@ function handleClick(state) {
 }
 
 var Popup = require("sdk/panel").Panel({
-  width: 225,
+  width: 240,
   height: 130,
   contentURL: "./popup/popup.html",
   contentScriptFile: "./popup/popup.js",
@@ -66,13 +66,13 @@ selection.on('select', function () {
         Request({
       url: Url,
       onComplete: function(response){
-        Popup.port.emit("translation",response.json);
-        console.log(response.json);
+        if (response.json.code==200){
+          Popup.port.emit("translation",response.json);
+        }else console.log(response.json);
       }
     }).get();
 
     Popup.port.emit("selection",{text:selection.text, Lang:LangTo, folder:icoType});
-    console.log(icoType);
     console.log('Selected : ['+selection.text+']; lang = '+LangTo);
     Popup.show();
   }
