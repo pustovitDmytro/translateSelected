@@ -9,7 +9,7 @@ Addons of this type are currently deprecated, so take a look on this [project](h
 
 Unfortunately, you can't install this add-on from Firefox store, but it is possible on the [addons.mozilla.org](https://addons.mozilla.org/ru/developers/addon/instantaneous-translator).
 
-If you prefer to build extensions by yourself, firstly clone this (repo)[https://github.com/pustovitDmytro/translateSelected]
+If you prefer to build extensions by yourself, firstly clone this [repo](https://github.com/pustovitDmytro/translateSelected)
 ```sh
 $ git clone https://github.com/pustovitDmytro/translateSelected addon
 $ cd addon
