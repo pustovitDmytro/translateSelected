@@ -14,7 +14,7 @@ If you prefer to build extensions by yourself, firstly clone this (repo)[https:/
 $ git clone https://github.com/pustovitDmytro/translateSelected addon
 $ cd addon
 ```
-You can use classic Firefox [Load Addon](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Your_first_WebExtension), but I recommend to use (web-ext)[https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Getting_started_with_web-ext]:
+You can use classic Firefox [Load Addon](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Your_first_WebExtension), but I recommend to use [web-ext](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Getting_started_with_web-ext):
 
 ```sh
 $ npm install --global web-ext
